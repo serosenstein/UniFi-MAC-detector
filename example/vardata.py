@@ -5,7 +5,8 @@ password="password";
 controller="10.192.168.192"
 mac_file="/home/user/mac.file"
 
-#Prowl API Key
+#Prowl API Key, need the pushno package from pip to send Prowl notifications
+#pip3 install pushno
 send_prowls=True
 apikey="123412341234345345345345ABCDABCDABCD1234"
 
@@ -18,7 +19,8 @@ receiver_email="youruser@gmail.com"
 smtp_server="smtp.gmail.com"
 smtp_port="587"
 
-#if needing twilio support: pip3 install twilio
+#if needing twilio support you need to install the twilio package from pip
+#pip3 install twilio
 send_twilio=True
 twilio_to="+13038675309"
 twilio_from="+16788675309"

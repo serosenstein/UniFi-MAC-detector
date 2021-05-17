@@ -3,12 +3,12 @@ A utility to run on a *nix system against the UniFi Controller to determine if a
 
 Pre-reqs:
 
-*Nix system  (needed for curl command because I'm too lazy to write the ProwlAPI call in Python or import a 3rd party library)
+If using Twilio you need to install the twilio package from pip: pip install twilio (or pip3 or whatever)
+
+If using Prowl, you will need to install the pushno package from pip: pip install pushno
 
 An API user created in UniFi Controller as a *LOCAL* Account
 
 The file "vardata.py" should be copied out of the example directory into the main level directory and the variables should be modified to fit your environment
 
-
-If you plan on using twilio integration you need to install the twilio python package with (or similiar):
-pip3 install twilio 
+Set whatever kind of notifications you want (email, prowl, twilio) to True or False
