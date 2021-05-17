@@ -115,48 +115,48 @@ def GetMacInfo(mac):
   for item in Mac_json["data"]:
     try:
         hostname = item['hostname']
-        info_string = str(info_string) + "Hostname: " + hostname + " "
+        info_string = str(info_string) + "Hostname: " + hostname + "\ "
     except:
         pass
     try:
         mac = item['mac']
-        info_string = str(info_string) + "MAC: " + mac + " "
+        info_string = str(info_string) + "MAC: " + mac + "\n"
 
     except:
         pass
     try:
         oui = item['oui']
-        info_string = str(info_string) + "OUI: " + oui + " "
+        info_string = str(info_string) + "OUI: " + oui + "\n"
 
     except:
         pass
     try:
         is_guest = item['is_guest']
-        info_string = str(info_string) + "Is Guest: " + is_guest + " "
+        info_string = str(info_string) + "Is Guest: " + is_guest + "\n"
 
     except:
         pass
     try:
         is_wired = item['is_wired']
-        info_string = str(info_string) + "Is Wired: " + is_wired + " "
+        info_string = str(info_string) + "Is Wired: " + is_wired + "\n"
 
     except:
         pass
     try:
         essid = item['essid']
-        info_string = str(info_string) + "SSID: " + essid + " "
+        info_string = str(info_string) + "SSID: " + essid + "\n"
 
     except:
         pass
     try:
         ip = item['ip']
-        info_string = str(info_string) + "IP: " + ip + " "
+        info_string = str(info_string) + "IP: " + ip + "\n"
 
     except:
         pass
     try:
         vlan = item['vlan']
-        info_string = str(info_string) + "VLAN: " + vlan + " "
+        info_string = str(info_string) + "VLAN: " + vlan + "\n"
 
     except:
         pass
