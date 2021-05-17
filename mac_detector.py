@@ -32,6 +32,9 @@ data = {'username': username, 'password': password}
 s = requests.Session()
 #Start a session and get the auth, then list all MACs
 r = s.post("https://" + controller + "/api/auth/login", headers = headers,  json = data , verify = False, timeout = 1)
+status_code = str(r.status_code)
+if status_code != "200":
+  exit("Return code for Auth was " + status_code)
 data = s.get("https://" + controller + "/proxy/network/api/s/default/stat/sta/", headers = headers, verify = False, timeout = 1).text
 json_data = json.loads(data)
 
