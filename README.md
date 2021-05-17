@@ -7,6 +7,8 @@ If using Twilio you need to install the twilio package from pip: pip install twi
 
 If using Prowl, you will need to install the pushno package from pip: pip install pushno
 
+If using email, and using Gmail (and probably some other providers), you may need to create an app password if you have 2FA enabled, read more here: https://support.google.com/accounts/answer/185833
+
 An API user created in UniFi Controller as a *LOCAL* Account
 
 The file "vardata.py" should be copied out of the example directory into the main level directory and the variables should be modified to fit your environment
