@@ -11,8 +11,8 @@ import smtplib, ssl
 import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
-send_prowls=True
-send_emails=True
+send_prowls = vardata.send_prowls
+send_emails = vardata.send_emails
 #Set this to nothing before we use it later as a global var, probably not the right way to do this
 info_string = ""
 
@@ -37,7 +37,7 @@ if send_emails:
     pass
 
 #Make sure all of the variables are set
-if not [x for x in (username, password, controller, mac_file, apikey) if x is None]:
+if not [x for x in (username, password, controller, mac_file) if x is None]:
     pass
 if not os.path.isfile(mac_file):
     print ("File does not exist, creating")
