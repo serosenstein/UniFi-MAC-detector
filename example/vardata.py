@@ -1,5 +1,5 @@
 #!/bin/python3
-
+#UniFi Controller info
 username="username"
 password="password";
 controller="10.192.168.192"
