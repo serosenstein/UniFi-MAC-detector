@@ -7,7 +7,6 @@ import requests
 import os
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-import smtplib, ssl
 import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
@@ -29,6 +28,7 @@ if send_prowls:
   
 
 if send_emails:
+  import smtplib, ssl
   sender_email = vardata.sender_email
   smtp_password = vardata.smtp_password
   receiver_email = vardata.receiver_email
@@ -130,7 +130,6 @@ def CheckMacExists(mac):
        UpdateMacFile(mac)
 
 def GetMacInfo(mac):
-  print("called getMacInfo with " + mac)
   global info_string
   info_string = ""
   macInfo = s.get("https://" + controller + "/proxy/network/api/s/default/stat/user/" + mac, headers = headers, verify = False, timeout = 1).text   
