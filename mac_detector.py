@@ -121,7 +121,3 @@ for item in json_data["data"]:
     mac = item['mac']
     if mac:
         CheckMacExists(mac)
-#    try:
-#        hostname = item['hostname']
-#    except:
-#        pass
