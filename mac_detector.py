@@ -7,10 +7,12 @@ import requests
 import os
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import smtplib, ssl
 import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
 send_prowls=False
+send_emails=True
 #Set this to nothing before we use it later as a global var, probably not the right way to do this
 info_string = ""
 
@@ -20,6 +22,15 @@ password = vardata.password
 controller = vardata.controller
 mac_file = vardata.mac_file
 apikey = vardata.apikey
+
+if send_emails:
+  sender_email = vardata.sender_email
+  smtp_password = vardata.smtp_password
+  receiver_email = vardata.receiver_email
+  smtp_server = vardata.smtp_server
+  smtp_port = vardata.smtp_port
+  if not [x for x in (sender_email,smtp_password,receiver_email,smtp_server,smtp_port) if x is None]:
+    pass
 
 #Make sure all of the variables are set
 if not [x for x in (username, password, controller, mac_file, apikey) if x is None]:
@@ -41,7 +52,25 @@ if status_code != "200":
   exit("Return code for Auth was " + status_code)
 data = s.get("https://" + controller + "/proxy/network/api/s/default/stat/sta/", headers = headers, verify = False, timeout = 1).text
 json_data = json.loads(data)
-
+def SendEmail(info):
+ message = "From: " + sender_email + "\n"
+ message = str(message) + "To: " + receiver_email + "\n"
+ message = str(message) + "Subject: UniFi-Mac-Detector: New Device Alert\n"
+ message = str(message) + "\n" + str(info) + "\n"
+ print(message)
+ try:
+  context = ssl.create_default_context()
+  with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.ehlo()
+    server.starttls(context=context)
+    server.ehlo()
+    server.login(sender_email, smtp_password)
+    server.sendmail(sender_email, receiver_email, message)
+  #debug comment
+  #print("sending email to " + receiver_email + " with this info " + info)
+ except:
+  print("Error sending email: " + sys.exc_info()[0]) 
+  raise
 def SendProwl(info):
  cmd="curl https://prowl.weks.net/publicapi/add -F apikey=" + apikey + " -F application='UniFi' -F priority=1 -F event='NEW DEVICE ON NETWORK' -F description='NEW DEVICE: " + info + "'"
  if send_prowls:
@@ -49,8 +78,9 @@ def SendProwl(info):
      os.system(cmd)
    except:
     print("Error sending prowl") 
- else:
-   print("Sending Prowls disabled, but would have sent: " + cmd)
+#uncomment to debug prowl
+# else:
+#   print("Sending Prowls disabled, but would have sent: " + cmd)
 
 def UpdateMacFile(mac):
   print("Appending MAC: " + mac + " to " + mac_file)
@@ -66,7 +96,10 @@ def CheckMacExists(mac):
         return True
     else:
        print(mac + " does not exist")
-       SendProwl(GetMacInfo(mac))
+       if send_prowls:
+         SendProwl(GetMacInfo(mac))
+       if send_emails:
+         SendEmail(GetMacInfo(mac))
        UpdateMacFile(mac)
 
 def GetMacInfo(mac):
