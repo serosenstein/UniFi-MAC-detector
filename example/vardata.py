@@ -18,3 +18,10 @@ receiver_email="youruser@gmail.com"
 smtp_server="smtp.gmail.com"
 smtp_port="587"
 
+#if needing twilio support: pip3 install twilio
+send_twilio=True
+twilio_to="+13038675309"
+twilio_from="+16788675309"
+twilio_sid="ABDASDF12341234ABDCDAGGHHA12341GGG"
+twilio_token="4adf5adf5afdad523fs4gsg23jg2fasd"
+
