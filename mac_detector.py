@@ -21,7 +21,11 @@ username = vardata.username
 password = vardata.password
 controller = vardata.controller
 mac_file = vardata.mac_file
-apikey = vardata.apikey
+if send_prowls:
+  apikey = vardata.apikey
+  if not [x for x in (apikey) if x is None]:
+    pass
+  
 
 if send_emails:
   sender_email = vardata.sender_email
