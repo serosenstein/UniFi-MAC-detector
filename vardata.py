@@ -1,6 +1,6 @@
 #!/bin/python3
-username="username";
-password="password";
-controller="10.1.200.192"
-mac_file="/home/user/mac.file.txt"
-apikey="12341234ABCDEFAFG1234ABCDEDFADF12354"
+username="unifiapi";
+password="AP14Lyfe";
+controller="192.168.1.238"
+mac_file="/root/mac.file"
+apikey="d61a1130cc05704187940d675142c2cbdcd8b925"
