@@ -11,7 +11,12 @@ vardata.py in the same directory as mac_detector.py. It should contain all varia
 
 #!/bin/python3
 username="APIUSER";
+
 password="APIPASSWORD";
+
 controller="1.2.3.4"
-mac_file="/path/to//mac.file.txt"
+
+mac_file="/path/to/mac.file.txt"
+
 apikey="123412341234ABCDEFG123412341234657891034"
+
