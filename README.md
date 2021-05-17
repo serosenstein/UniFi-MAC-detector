@@ -11,13 +11,18 @@ vardata.py in the same directory as mac_detector.py. It should contain all varia
 
 #!/bin/python3
 
+#Local API user on UniFi Controller
 username="APIUSER";
 
+#Password for the API User
 password="APIPASSWORD";
 
+#IP or Hostname of the UniFi Controller
 controller="1.2.3.4"
 
+#File where MACs will persistently be stored, don't use /tmp/
 mac_file="/path/to/mac.file.txt"
 
+#APIKey for Prowl (if using prowl)
 apikey="123412341234ABCDEFG123412341234657891034"
 
