@@ -91,16 +91,15 @@ def SendEmail(info):
   print("Error sending email: " + sys.exc_info()[0]) 
   raise
 def SendProwl(info):
- cmd="curl https://prowl.weks.net/publicapi/add -F apikey=" + apikey + " -F application='UniFi' -F priority=1 -F event='NEW DEVICE ON NETWORK' -F description='NEW DEVICE: " + info + "'"
- if send_prowls:
-   try:
-     os.system(cmd)
-   except:
-    print("Error sending prowl") 
-#uncomment to debug prowl
-# else:
-#   print("Sending Prowls disabled, but would have sent: " + cmd)
-
+ from pushno import PushNotification
+ pn = PushNotification(
+     "prowl", api_key=apikey, application="UniFi MAC Detector"
+ )
+ is_valid, res = pn.validate_user()
+ if is_valid:
+     pn.send(event="New UniFi MAC detected", description=info)
+ else:
+     print(res)
 def UpdateMacFile(mac):
   print("Appending MAC: " + mac + " to " + mac_file)
   file_object = open(mac_file, 'a')
