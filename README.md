@@ -10,6 +10,7 @@ An API user created in UniFi Controller as a *LOCAL* Account
 vardata.py in the same directory as mac_detector.py. It should contain all variables, here is an example:
 
 #!/bin/python3
+
 username="APIUSER";
 
 password="APIPASSWORD";
