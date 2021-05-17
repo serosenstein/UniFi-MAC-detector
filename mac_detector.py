@@ -11,7 +11,7 @@ import smtplib, ssl
 import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
-send_prowls=False
+send_prowls=True
 send_emails=True
 #Set this to nothing before we use it later as a global var, probably not the right way to do this
 info_string = ""
