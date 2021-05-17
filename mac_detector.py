@@ -10,7 +10,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
-send_prowls=True
+send_prowls=False
 #Set this to nothing before we use it later as a global var, probably not the right way to do this
 info_string = ""
 
@@ -24,6 +24,10 @@ apikey = vardata.apikey
 #Make sure all of the variables are set
 if not [x for x in (username, password, controller, mac_file, apikey) if x is None]:
     pass
+if not os.path.isfile(mac_file):
+    print ("File does not exist, creating")
+    with open(mac_file, 'w') as fp:
+      pass
 
 #Get list of MACs from UniFi Controller
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
