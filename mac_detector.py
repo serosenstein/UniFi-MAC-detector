@@ -1,6 +1,7 @@
 #!/bin/python3
 #Steve Rosenstein serosenstein@gmail.com
 #UniFi Controller New Mac Detector and Alerter
+#Make sure you have vardata.py in the same directory as this script or hardcode values below
 #5-16-2021
 import requests
 import os
