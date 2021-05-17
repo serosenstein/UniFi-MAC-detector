@@ -27,7 +27,7 @@ controller="1.2.3.4"
 
 mac_file="/path/to/mac.file.txt"
 
-#APIKey for Prowl (if using prowl)
+#APIKey for Prowl (if using prowl, leave empty if not)
 
 apikey="123412341234ABCDEFG123412341234657891034"
 
