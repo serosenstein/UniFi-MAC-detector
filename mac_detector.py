@@ -35,7 +35,7 @@ data = s.get("https://" + controller + "/proxy/network/api/s/default/stat/sta/",
 json_data = json.loads(data)
 
 def SendProwl(info):
- cmd="/usr/bin/curl https://prowl.weks.net/publicapi/add -F apikey=" + apikey + " -F application='UniFi' -F priority=1 -F event='NEW DEVICE ON NETWORK' -F description='NEW DEVICE: " + info + "'"
+ cmd="curl https://prowl.weks.net/publicapi/add -F apikey=" + apikey + " -F application='UniFi' -F priority=1 -F event='NEW DEVICE ON NETWORK' -F description='NEW DEVICE: " + info + "'"
  if send_prowls:
    try:
      os.system(cmd)
