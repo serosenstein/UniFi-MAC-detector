@@ -115,7 +115,7 @@ def GetMacInfo(mac):
   for item in Mac_json["data"]:
     try:
         hostname = item['hostname']
-        info_string = str(info_string) + "Hostname: " + hostname + "\ "
+        info_string = str(info_string) + "Hostname: " + hostname + "\n"
     except:
         pass
     try:
