@@ -13,6 +13,7 @@ import vardata
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
 send_prowls = vardata.send_prowls
 send_emails = vardata.send_emails
+send_twilio = vardata.send_twilio
 #Set this to nothing before we use it later as a global var, probably not the right way to do this
 info_string = ""
 
@@ -56,6 +57,20 @@ if status_code != "200":
   exit("Return code for Auth was " + status_code)
 data = s.get("https://" + controller + "/proxy/network/api/s/default/stat/sta/", headers = headers, verify = False, timeout = 1).text
 json_data = json.loads(data)
+def SendTwilio(info):
+  from twilio.rest import Client
+  twilio_to = vardata.twilio_to 
+  twilio_from = vardata.twilio_from
+  twilio_sid = vardata.twilio_sid
+  twilio_token = vardata.twilio_token
+  if not [x for x in (twilio_to,twilio_sid,twilio_token) if x is None]:
+    pass
+  client = Client(twilio_sid, twilio_token)
+  message = client.messages \
+                .create(
+                     body=info,
+                     from_=twilio_from,
+                     to=twilio_to)
 def SendEmail(info):
  message = "From: " + sender_email + "\n"
  message = str(message) + "To: " + receiver_email + "\n"
@@ -111,6 +126,8 @@ def CheckMacExists(mac):
          SendProwl(GetMacInfo(mac))
        if send_emails:
          SendEmail(GetMacInfo(mac))
+       if send_twilio:
+         SendTwilio(GetMacInfo(mac))
        UpdateMacFile(mac)
 
 def GetMacInfo(mac):
