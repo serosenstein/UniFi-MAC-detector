@@ -1,5 +1,7 @@
 # UniFi-MAC-detector
-A utility to run on a *nix system against the UniFi Controller to determine if a previously unknown MAC has been discovered on the network
+A utility to run against the UniFi Controller to determine if a previously unknown MAC has been discovered on the network
+
+You can schedule it in cron or some other utility to run at whatever interval you want
 
 Pre-reqs:
 
