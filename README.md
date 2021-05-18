@@ -5,9 +5,15 @@ You can schedule it in cron or some other utility to run at whatever interval yo
 
 Pre-reqs:
 
-If using Twilio you need to install the twilio package from pip: pip install twilio (or pip3 or whatever)
+If you want to install all requirements for all features you can do: pip3 install -r requirements.txt
 
-If using Prowl, you will need to install the pushno package from pip: pip install pushno
+You can also only install the pip modules that you will be using:
+
+If using Twilio you need to install the twilio package from pip: pip3 install twilio
+
+If using Prowl, you will need to install the pushno package from pip: pip3 install pushno
+
+If using tinydb (useJSON=True), you will need to install tinydb package from pip: pip3 install tinydb
 
 If using email, and using Gmail (and probably some other providers), you may need to create an app password if you have 2FA enabled, read more here: https://support.google.com/accounts/answer/185833
 
@@ -17,5 +23,4 @@ The file "vardata.py" should be copied out of the example directory into the mai
 
 Set whatever kind of notifications you want (email, prowl, twilio) to True or False
 
-You can either save the mac_file as a regular flat file (useJSON=False) or as a JSON encoded file (useJSON=True).  If you do decide to use JSON you will also need the tinydb package installed:
-pip3 install tinydb
+You can either save the mac_file as a regular flat file (useJSON=False) or as a JSON encoded file (useJSON=True).
