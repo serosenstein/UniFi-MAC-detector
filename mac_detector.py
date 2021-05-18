@@ -103,12 +103,14 @@ def SendProwl(info):
 def UpdateMacFile(info_string):
   print("Appending: " + info_string + " to " + mac_file)
   file_object = open(mac_file, 'a')
-  with open(mac_file) as f:
-    lines = f.readlines()
-    last = lines[-1]
-    for line in lines:
-        if line is last and "\n" not in line:
-          file_object.write('\n')
+  filesize = os.path.getsize(mac_file)
+  if filesize != 0:
+    with open(mac_file) as f:
+      lines = f.readlines()
+      last = lines[-1]
+      for line in lines:
+          if line is last and "\n" not in line:
+            file_object.write('\n')
   #make sure the current last line ends with a newline
   file_object.write(info_string)
   file_object.write('\n')
