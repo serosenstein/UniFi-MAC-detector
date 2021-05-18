@@ -1,4 +1,11 @@
 #!/bin/python3
+
+
+
+#Use tinydb to use JSON based MAC file, if false will just use a flat file
+#pip3 install tinydb
+useJSON=False
+
 #UniFi Controller info
 username="username"
 password="password";
