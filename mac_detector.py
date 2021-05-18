@@ -4,7 +4,6 @@
 #Make sure you have vardata.py in the same directory as this script or hardcode values below
 #5-16-2021
 import requests
-from tinydb import TinyDB, Query, where
 import os
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
@@ -54,6 +53,7 @@ if filesize != 0 and useJSON:
   try:
    f = open(mac_file)
    json.load(f)
+   from tinydb import TinyDB, Query, where
   except ValueError as err:
     exit("Your mac_file " + mac_file + " is not valid, if you tried to switch from non-JSON to JSON you will need to delete the file and let it get recreated")
 

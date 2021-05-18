@@ -16,3 +16,6 @@ An API user created in UniFi Controller as a *LOCAL* Account
 The file "vardata.py" should be copied out of the example directory into the main level directory and the variables should be modified to fit your environment
 
 Set whatever kind of notifications you want (email, prowl, twilio) to True or False
+
+You can either save the mac_file as a regular flat file (useJSON=False) or as a JSON encoded file (useJSON=True).  If you do decide to use JSON you will also need the tinydb package installed:
+pip3 install tinydb
