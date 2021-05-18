@@ -49,11 +49,12 @@ if not os.path.isfile(mac_file):
 
 file_object = open(mac_file, 'a')
 filesize = os.path.getsize(mac_file)
+if useJSON:
+  from tinydb import TinyDB, Query, where
 if filesize != 0 and useJSON:
   try:
    f = open(mac_file)
    json.load(f)
-   from tinydb import TinyDB, Query, where
   except ValueError as err:
     exit("Your mac_file " + mac_file + " is not valid, if you tried to switch from non-JSON to JSON you will need to delete the file and let it get recreated")
 
