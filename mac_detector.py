@@ -8,6 +8,7 @@ from tinydb import TinyDB, Query, where
 import os
 import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import vardata
 
 #send_prowls will determine if you actually will send out the alerts or just say that you would have, good for debugging and now spamming yourself
 send_prowls = vardata.send_prowls
