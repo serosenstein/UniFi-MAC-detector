@@ -218,6 +218,13 @@ def GetMacInfo(mac):
     except:
         pass
     try:
+        network = item['network']
+        if(network):
+          info_string = str(info_string) + "Network: " + network + "\n"
+          json_string = json_string + "'Network': '" + network + "',"
+    except:
+        pass
+    try:
         essid = item['essid']
         if(essid):
           info_string = str(info_string) + "SSID: " + essid + "\n"
